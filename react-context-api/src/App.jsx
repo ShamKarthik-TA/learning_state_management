@@ -3,6 +3,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import ProductList from './features/activity/ProductList';
 import Cart from './features/activity/Cart';
+import { useActivity } from './features/activity/ActivityContext';
 import { CounterProvider } from './features/counter/CounterContext';
 import { TodoProvider } from './features/todo/TodoContext';
 import { WeatherProvider } from './features/weather/WeatherContext';
@@ -12,6 +13,7 @@ import WeatherExample from './features/weather/WeatherExample';
 
 
 function App() {
+  const { cart } = useActivity();
   return (
     <CounterProvider>
       <TodoProvider>
@@ -34,7 +36,7 @@ function App() {
             Click on the Vite and React logos to learn more
           </p>
           <ProductList />
-          <Cart cart={[]} />
+          <Cart cart={cart} />
         </WeatherProvider>
       </TodoProvider>
     </CounterProvider>

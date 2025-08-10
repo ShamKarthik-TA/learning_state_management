@@ -12,6 +12,7 @@ import Cart from './features/activity/Cart';
 
 function App() {
   const count = useSelector((state) => state.counter.value);
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   return (
@@ -36,7 +37,7 @@ function App() {
       <hr />
       <WeatherExample />
   <ProductList />
-  <Cart cart={[]} />
+  <Cart cart={cart} />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>

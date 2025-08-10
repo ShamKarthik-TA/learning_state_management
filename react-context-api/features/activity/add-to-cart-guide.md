@@ -105,6 +105,28 @@ export default App;
 
 ---
 
+
+## 0. Wrap Your App with ActivityProvider
+
+**Why:** The ActivityProvider must wrap your app at the top level so that the context is available everywhere.
+
+**How:** In `src/main.jsx`, wrap `<App />` with `<ActivityProvider>`:
+
+```jsx
+import { ActivityProvider } from './features/activity/ActivityContext';
+// ...existing imports...
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <ActivityProvider>
+      <App />
+    </ActivityProvider>
+  </StrictMode>,
+)
+```
+
+---
+
 ## 4. Implement the Cart Feature
 
 **Why:** To allow users to add products to a cart and view them in the Cart UI.

@@ -1,5 +1,7 @@
 import React from 'react';
 import ProductCard from './ProductCard';
+import { useDispatch } from 'react-redux';
+import { addToCart } from './cartSlice';
 
 const sampleProducts = [
   { id: 1, name: 'Apple', price: 1.5 },
@@ -8,10 +10,9 @@ const sampleProducts = [
 ];
 
 const ProductList = () => {
-  // Placeholder for add to cart handler
+  const dispatch = useDispatch();
   const handleAddToCart = (product) => {
-    // TODO: Implement add to cart logic
-    alert(`Add to cart: ${product.name}`);
+    dispatch(addToCart(product));
   };
 
   return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductCard from './ProductCard';
+import useActivityStore from '../../store/activityStore';
 
 const sampleProducts = [
   { id: 1, name: 'Apple', price: 1.5 },
@@ -8,18 +9,14 @@ const sampleProducts = [
 ];
 
 const ProductList = () => {
-  // Placeholder for add to cart handler
-  const handleAddToCart = (product) => {
-    // TODO: Implement add to cart logic
-    alert(`Add to cart: ${product.name}`);
-  };
+  const addToCart = useActivityStore((state) => state.addToCart);
 
   return (
     <div>
       <h2>Shop</h2>
       <div style={{ display: 'flex', gap: 16 }}>
         {sampleProducts.map((product) => (
-          <ProductCard key={product.id} product={product} onAddToCart={handleAddToCart} />
+          <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
         ))}
       </div>
     </div>

@@ -1,4 +1,5 @@
 import Cart from './features/activity/Cart';
+import useActivityStore from './store/activityStore';
 import React from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
@@ -9,6 +10,7 @@ import TodoExample from './features/todo/TodoExample';
 import WeatherExample from './features/weather/WeatherExample';
 
 export default function App() {
+  const cart = useActivityStore((state) => state.cart);
   return (
     <>
       <div>
@@ -27,8 +29,8 @@ export default function App() {
       <TodoExample />
       <hr />
       <WeatherExample />
-  <ProductList />
-  <Cart cart={[]} />
+      <ProductList />
+      <Cart cart={cart} />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
