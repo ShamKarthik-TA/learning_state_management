@@ -3,6 +3,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import ProductList from './features/activity/ProductList';
 import Cart from './features/activity/Cart';
+import { ContextRerenderProblem, ContextRerenderFixed, ContextSplitContextsSolution } from './features/activity/ContextConsExamples';
 import { CounterProvider } from './features/counter/CounterContext';
 import { TodoProvider } from './features/todo/TodoContext';
 import { WeatherProvider } from './features/weather/WeatherContext';
@@ -35,6 +36,9 @@ function App() {
           </p>
           <ProductList />
           <Cart cart={[]} />
+            <ContextRerenderProblem />
+            <ContextRerenderFixed />
+            <ContextSplitContextsSolution />
         </WeatherProvider>
       </TodoProvider>
     </CounterProvider>

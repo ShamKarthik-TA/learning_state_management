@@ -9,6 +9,7 @@ import TodoExample from './TodoExample';
 import WeatherExample from './WeatherExample';
 import ProductList from './features/activity/ProductList';
 import Cart from './features/activity/Cart';
+import { ReduxBoilerplateProblem, ReduxMissingSliceFixed } from './features/activity/ReduxConsExamples';
 
 function App() {
   const count = useSelector((state) => state.counter.value);
@@ -37,6 +38,8 @@ function App() {
       <WeatherExample />
   <ProductList />
   <Cart cart={[]} />
+  <ReduxBoilerplateProblem />
+  <ReduxMissingSliceFixed />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
