@@ -105,11 +105,65 @@ export default App;
 
 ---
 
-## Next Steps
+## 4. Implement the Cart Feature
 
-- Implement the cart logic using Context API (see `activity.md` for a detailed guide).
-- Connect the "Add to Cart" button to your cart state and actions.
+**Why:** To allow users to add products to a cart and view them in the Cart UI.
+
+### Step 1: Add Cart State to Context
+
+In `ActivityContext.jsx`, add a `cart` state and functions to add/remove items:
+
+```jsx
+const [cart, setCart] = useState([]);
+
+const addToCart = (product) => {
+  setCart((prev) => [...prev, product]);
+};
+
+const removeFromCart = (index) => {
+  setCart((prev) => prev.filter((_, i) => i !== index));
+};
+
+// In the provider value:
+<ActivityContext.Provider value={{ activities, addActivity, removeActivity, cart, addToCart, removeFromCart }}>
+```
+
+### Step 2: Connect ProductList to Cart
+
+In `ProductList.jsx`, use the context and pass `addToCart` to `ProductCard`:
+
+```jsx
+import { useActivity } from './ActivityContext';
+// ...existing code...
+
+const { addToCart } = useActivity();
+
+<ProductCard key={product.id} product={product} onAddToCart={addToCart} />
+```
+
+### Step 3: Enable Add to Cart Button
+
+In `ProductCard.jsx`, remove the `disabled` prop from the button:
+
+```jsx
+<button onClick={() => onAddToCart(product)}>
+  Add to Cart
+</button>
+```
+
+### Step 4: Render Cart Items
+
+In `App.jsx`, use the context to get the cart and pass it to the `Cart` component:
+
+```jsx
+import { useActivity } from './features/activity/ActivityContext';
+// ...existing code...
+
+const { cart } = useActivity();
+
+<Cart cart={cart} />
+```
 
 ---
 
-This boilerplate sets up a simple shop UI. You can now follow the detailed steps in `activity.md` to implement the cart feature!
+Now, when you click "Add to Cart", the product will appear in the Cart UI!

@@ -8,6 +8,7 @@ import { increment, decrement, incrementByAmount } from './features/counter/coun
 import TodoExample from './TodoExample';
 import WeatherExample from './WeatherExample';
 import ProductList from './features/activity/ProductList';
+import Cart from './features/activity/Cart';
 
 function App() {
   const count = useSelector((state) => state.counter.value);
@@ -35,6 +36,7 @@ function App() {
       <hr />
       <WeatherExample />
   <ProductList />
+  <Cart cart={[]} />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>

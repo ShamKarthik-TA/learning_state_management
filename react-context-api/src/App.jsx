@@ -2,6 +2,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ProductList from './features/activity/ProductList';
+import Cart from './features/activity/Cart';
 import { CounterProvider } from './features/counter/CounterContext';
 import { TodoProvider } from './features/todo/TodoContext';
 import { WeatherProvider } from './features/weather/WeatherContext';
@@ -33,6 +34,7 @@ function App() {
             Click on the Vite and React logos to learn more
           </p>
           <ProductList />
+          <Cart cart={[]} />
         </WeatherProvider>
       </TodoProvider>
     </CounterProvider>

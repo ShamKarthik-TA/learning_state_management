@@ -105,11 +105,82 @@ export default App;
 
 ---
 
-## Next Steps
+## 4. Implement the Cart Feature
 
-- Implement the cart logic using Redux Toolkit (see `activity.md` for a detailed guide).
-- Connect the "Add to Cart" button to your cart state and actions.
+**Why:** To allow users to add products to a cart and view them in the Cart UI.
+
+### Step 1: Create Cart Slice
+
+Create `src/features/activity/cartSlice.js`:
+
+```js
+import { createSlice } from '@reduxjs/toolkit';
+
+const cartSlice = createSlice({
+  name: 'cart',
+  initialState: [],
+  reducers: {
+    addToCart: (state, action) => {
+      state.push(action.payload);
+    },
+    removeFromCart: (state, action) => {
+      state.splice(action.payload, 1);
+    },
+  },
+});
+
+export const { addToCart, removeFromCart } = cartSlice.actions;
+export default cartSlice.reducer;
+```
+
+Add the cart reducer to your store in `store.js`:
+
+```js
+import cartReducer from './features/activity/cartSlice';
+// ...existing reducers...
+cart: cartReducer,
+```
+
+### Step 2: Connect ProductList to Cart
+
+In `ProductList.jsx`, use Redux hooks to dispatch `addToCart`:
+
+```jsx
+import { useDispatch } from 'react-redux';
+import { addToCart } from './cartSlice';
+// ...existing code...
+
+const dispatch = useDispatch();
+const handleAddToCart = (product) => {
+  dispatch(addToCart(product));
+};
+
+<ProductCard key={product.id} product={product} onAddToCart={handleAddToCart} />
+```
+
+### Step 3: Enable Add to Cart Button
+
+In `ProductCard.jsx`, remove the `disabled` prop from the button:
+
+```jsx
+<button onClick={() => onAddToCart(product)}>
+  Add to Cart
+</button>
+```
+
+### Step 4: Render Cart Items
+
+In `App.jsx`, use `useSelector` to get the cart and pass it to the `Cart` component:
+
+```jsx
+import { useSelector } from 'react-redux';
+// ...existing code...
+
+const cart = useSelector(state => state.cart);
+
+<Cart cart={cart} />
+```
 
 ---
 
-This boilerplate sets up a simple shop UI. You can now follow the detailed steps in `activity.md` to implement the cart feature!
+Now, when you click "Add to Cart", the product will appear in the Cart UI!

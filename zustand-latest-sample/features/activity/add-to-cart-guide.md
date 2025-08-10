@@ -105,11 +105,60 @@ export default App;
 
 ---
 
-## Next Steps
+## 4. Implement the Cart Feature
 
-- Implement the cart logic using Zustand (see `activity.md` for a detailed guide).
-- Connect the "Add to Cart" button to your cart state and actions.
+**Why:** To allow users to add products to a cart and view them in the Cart UI.
+
+### Step 1: Add Cart State to Store
+
+In `src/store/activityStore.js`, add cart state and actions:
+
+```js
+const useActivityStore = create((set) => ({
+  // ...existing state...
+  cart: [],
+  addToCart: (product) => set((state) => ({ cart: [...state.cart, product] })),
+  removeFromCart: (index) => set((state) => ({ cart: state.cart.filter((_, i) => i !== index) })),
+  // ...existing actions...
+}));
+```
+
+### Step 2: Connect ProductList to Cart
+
+In `ProductList.jsx`, use the store and pass `addToCart` to `ProductCard`:
+
+```jsx
+import useActivityStore from '../../store/activityStore';
+// ...existing code...
+
+const addToCart = useActivityStore((state) => state.addToCart);
+
+<ProductCard key={product.id} product={product} onAddToCart={addToCart} />
+```
+
+### Step 3: Enable Add to Cart Button
+
+In `ProductCard.jsx`, remove the `disabled` prop from the button:
+
+```jsx
+<button onClick={() => onAddToCart(product)}>
+  Add to Cart
+</button>
+```
+
+### Step 4: Render Cart Items
+
+In `App.jsx`, use the store to get the cart and pass it to the `Cart` component:
+
+```jsx
+import useActivityStore from './store/activityStore';
+// ...existing code...
+
+const cart = useActivityStore((state) => state.cart);
+
+<Cart cart={cart} />
+```
 
 ---
 
-This boilerplate sets up a simple shop UI. You can now follow the detailed steps in `activity.md` to implement the cart feature!
+Now, when you click "Add to Cart", the product will appear in the Cart UI!
