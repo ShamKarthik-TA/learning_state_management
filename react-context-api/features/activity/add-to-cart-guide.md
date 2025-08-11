@@ -166,4 +166,30 @@ const { cart } = useActivity();
 
 ---
 
+## 5. Wrap Your App with the Provider (Required!)
+
+**Why:** The context provider must wrap your app (or the part of the app that needs access to the cart/activity state) so that all components can use the context.
+
+**How:** In `src/main.jsx` (or at the top level of your app), wrap your app with the provider:
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { ActivityProvider } from './features/activity/ActivityContext';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <ActivityProvider>
+      <App />
+    </ActivityProvider>
+  </React.StrictMode>
+);
+```
+
+**What this does:**
+- Ensures all components inside `<App />` can access the activity/cart context.
+
+---
+
 Now, when you click "Add to Cart", the product will appear in the Cart UI!

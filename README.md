@@ -91,6 +91,26 @@ This will start the Vite development server. Open the local URL shown in your te
 
 ---
 
+## 📚 Additional Learning & Guides
+
+- [Context API: Add to Cart Guide](./react-context-api/features/activity/add-to-cart-guide.md)
+- [Workshop Slides (Marp)](./global-state-comparison.marp.md)
+
+---
+
+## 🗂️ Branches in This Repo
+
+- **main** – The default branch with all stable, working examples and slides.
+- **cons-and-fix** – Contains examples and demos focused on common pitfalls (cons) and fixes for each state management approach.
+- **add-to-cart-implemented** – Implements the activity context and cart functionality with a step-by-step guide for Context API.
+
+Switch branches using:
+```sh
+git checkout <branch-name>
+```
+
+---
+
 ## What Each Folder Shows
 
 - **react-context-api/**: Visualizes Context API usage, common pitfalls, and best practices.
@@ -98,9 +118,6 @@ This will start the Vite development server. Open the local URL shown in your te
 - **zustand-latest-sample/**: Shows Zustand's minimal API, selectors, and async caveats.
 
 Each project contains hands-on examples and visual demos for learning and comparison.
-
-## Workshop Slides
-See `global-state-comparison.marp.md` for the full workshop slide deck (open with Marp or VS Code Marp extension).
 
 ## License
 MIT
