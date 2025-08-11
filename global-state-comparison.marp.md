@@ -217,11 +217,13 @@ style: |
 
 | Feature         | <span style="color:#ffb400">Context API</span> | <span style="color:#00d8ff">Redux Toolkit</span> | <span style="color:#ff61a6">Zustand</span> |
 |----------------|:----------------------:|:----------------------:|:----------------------:|
-| Boilerplate    | Low                    | High                   | Very Low               |
-| Devtools       | No                     | Yes                    | Optional               |
-| Async Support  | Manual                 | Built-in               | Manual                 |
-| Re-render Ctrl | Poor (default)         | Good                   | Excellent              |
-| Ecosystem      | Built-in               | Huge                   | Growing                |
+| Boilerplate         | Low                    | High                   | Very Low               |
+| Devtools            | No                     | Yes                    | Optional               |
+| Async Support       | Manual                 | Built-in               | Manual                 |
+| Re-render Ctrl      | Poor (default)         | Good                   | Excellent              |
+| Ecosystem           | Built-in               | Huge                   | Growing                |
+| GitHub Stars        | 238k (React)           | 11k                    | 54.1k                  |
+| npm Weekly Downloads| 41.8M (react)          | 5.8M                   | 9.9M                   |
 
 ---
 
